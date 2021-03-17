@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Endzone : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float chances = 5f;
 
     private void OnTriggerEnter(Collider other)
@@ -14,7 +11,4 @@ public class Endzone : MonoBehaviour
         Debug.Log(chances);
         Destroy(other.gameObject);
     }
-    
-    // Update is called once per frame
-   
 }
