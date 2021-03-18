@@ -2,14 +2,14 @@
 
 public class GunScript : MonoBehaviour
 {
-    public float damage = 10f;
+    public int damage = 10;
     public float range = 10000f;
     public Camera fpsCam;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             Shoot();
         }
@@ -23,18 +23,19 @@ public class GunScript : MonoBehaviour
         {
 
             Debug.Log(hit.transform.name);
-            DealDamage combat = hit.transform.GetComponent<DealDamage>();
-            if(combat != null)
+
+            Health health = hit.transform.GetComponentInParent<Health>();
+            if (health != null)
             {
-                combat.takeDamage(damage);
+                health.TakeDamage(damage);
             }
         }
     }
 
     void OnDrawGizmos()
-{   
-    // Gizmos.color = Color.red;
-    // Vector3 direction = fpsCam.transform.forward * range;
-    // Gizmos.DrawRay(transform.position, direction);
-}
+    {
+        // Gizmos.color = Color.red;
+        // Vector3 direction = fpsCam.transform.forward * range;
+        // Gizmos.DrawRay(transform.position, direction);
+    }
 }
